@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_USERNAME = credentials('docker-hub-username') ?: ""
-        DOCKER_HUB_PASSWORD = credentials('docker-hub-password') ?: "" 
+        DOCKER_HUB_USERNAME = credentials("docker-hub-username") 
+        DOCKER_HUB_PASSWORD = credentials("docker-hub-password")
         DOCKER_IMAGE_NAME = "sivanamurugesan/jenkins:v1.0"
     }
 
