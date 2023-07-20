@@ -1,0 +1,118 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clean') {
+            steps {
+                echo '=== Maven Clean ==='
+                echo 'mvn clean'
+            }
+        }
+
+        stage('Initialize') {
+            steps {
+                echo '=== Maven Initialize ==='
+                echo 'mvn initialize'
+            }
+        }
+
+        stage('Validate') {
+            steps {
+                echo '=== Maven Validate ==='
+                echo 'mvn validate'
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                echo '=== Maven Compile ==='
+                echo 'mvn compile'
+            }
+        }
+
+        stage('Test Resources') {
+            steps {
+                echo '=== Maven Test Resources ==='
+                echo 'mvn testResources'
+            }
+        }
+
+        stage('Test Compile') {
+            steps {
+                echo '=== Maven Test Compile ==='
+                echo 'mvn testCompile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo '=== Maven Test ==='
+                echo 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                echo '=== Maven Package ==='
+                echo 'mvn package'
+            }
+        }
+
+        stage('Integration Test') {
+            steps {
+                echo '=== Maven Integration Test ==='
+                echo 'mvn integration-test'
+            }
+        }
+
+        stage('Verify') {
+            steps {
+                echo '=== Maven Verify ==='
+                echo 'mvn verify'
+            }
+        }
+
+        stage('Install') {
+            steps {
+                echo '=== Maven Install ==='
+                echo 'mvn install'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo '=== Maven Deploy ==='
+                echo 'mvn deploy'
+            }
+        }
+
+        stage('Site') {
+            steps {
+                echo '=== Maven Site ==='
+                echo 'mvn site'
+            }
+        }
+
+        stage('Clean Site') {
+            steps {
+                echo '=== Maven Clean Site ==='
+                echo 'mvn clean site'
+            }
+        }
+
+        stage('Site Deploy') {
+            steps {
+                echo '=== Maven Site Deploy ==='
+                echo 'mvn site-deploy'
+            }
+        }
+
+        stage('Deploy Site') {
+            steps {
+                echo '=== Maven Deploy Site ==='
+                echo 'mvn deploy site'
+            }
+        }
+    }
+}
+

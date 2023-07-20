@@ -1,0 +1,90 @@
+pipeline {
+    agent any
+
+    stages {
+        // ... Previous stages ...
+
+        stage('Test Resources') {
+            steps {
+                echo '=== Maven Test Resources ==='
+                echo 'Process and copy test resources to the test output directory'
+                echo 'Example: mvn testResources'
+            }
+        }
+
+        stage('Test Compile') {
+            steps {
+                echo '=== Maven Test Compile ==='
+                echo 'Compile the test source files'
+                echo 'Example: mvn testCompile'
+            }
+        }
+
+        stage('Integration Test') {
+            steps {
+                echo '=== Maven Integration Test ==='
+                echo 'Run integration tests against the package'
+                echo 'Example: mvn integration-test'
+            }
+        }
+
+        stage('Verify') {
+            steps {
+                echo '=== Maven Verify ==='
+                echo 'Run checks to verify the package is valid and meets quality criteria'
+                echo 'Example: mvn verify'
+            }
+        }
+
+        stage('Site') {
+            steps {
+                echo '=== Maven Site ==='
+                echo 'Generate the project site documentation'
+                echo 'Example: mvn site'
+            }
+        }
+
+        stage('Clean Site') {
+            steps {
+                echo '=== Maven Clean Site ==='
+                echo 'Remove all files from the site output directory'
+                echo 'Example: mvn clean site'
+            }
+        }
+
+        stage('Site Deploy') {
+            steps {
+                echo '=== Maven Site Deploy ==='
+                echo 'Deploy the generated site to a specified web server'
+                echo 'Example: mvn site-deploy'
+            }
+        }
+
+        // ... Other stages representing different Maven lifecycle phases ...
+
+        stage('Package') {
+            steps {
+                echo '=== Maven Package ==='
+                echo 'Take the compiled code and package it in its distributable format'
+                echo 'Example: mvn package'
+            }
+        }
+        
+        stage('Install') {
+            steps {
+                echo '=== Maven Install ==='
+                echo 'Install the package into the local repository for use as a dependency'
+                echo 'Example: mvn install'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo '=== Maven Deploy ==='
+                echo 'Copy the final package to the remote repository for sharing with other developers and projects'
+                echo 'Example: mvn deploy'
+            }
+        }
+    }
+}
+
