@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    environment {
+        // Customize these variables for your environment
+        KUBE_CONFIG_CREDENTIALS = 'your-kubeconfig-credentials-id'
+        K8S_CLUSTER_NAME = 'your-k8s-cluster-name'
+        K8S_NAMESPACE = 'your-kubernetes-namespace'
+        APP_NAME = 'your-app-name'
+        DOCKER_IMAGE = 'your-docker-image-name:tag'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building.."
+                // Add build steps here
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Testing.."
+                // Add test steps here
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                echo "Deploying to Kubernetes..."
+                kubernetesDeploy(
+                    credentialsId: KUBE_CONFIG_CREDENTIALS,
+                    kubeconfigId: KUBE_CONFIG_CREDENTIALS,
+                    configs: 'path/to/kubernetes/yaml/folder',
+                    enableConfigSubstitution: true,
+                    kubeconfigContent: 'your-kubeconfig-contents',
+                    namespace: K8S_NAMESPACE,
+                    maxRetries: 10,
+                    maxRetryInterval: 60
+                )
+            }
+        }
+
+        stage('Cleanup') {
+            steps {
+                echo "Cleaning up..."
+                // Add cleanup steps here if needed
+            }
+        }
+    }
+}
+

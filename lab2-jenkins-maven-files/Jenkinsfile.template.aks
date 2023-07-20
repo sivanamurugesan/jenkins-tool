@@ -1,0 +1,49 @@
+pipeline {
+    agent any
+
+    environment {
+        // Customize these variables for your environment
+        AKS_CLUSTER_NAME = 'your-aks-cluster-name'
+        AKS_RESOURCE_GROUP = 'your-aks-resource-group'
+        K8S_NAMESPACE = 'your-kubernetes-namespace'
+        APP_NAME = 'your-app-name'
+        DOCKER_IMAGE = 'your-docker-image-name:tag'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building.."
+                // Add build steps here
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Testing.."
+                // Add test steps here
+            }
+        }
+
+        stage('Deploy to AKS') {
+            steps {
+                echo "Deploying to AKS..."
+                azureKubernetesServiceDeploy(
+                    azureCredentialsId: 'your-azure-credentials-id',
+                    kubeconfigContent: 'your-kubeconfig-contents',
+                    resourceGroup: AKS_RESOURCE_GROUP,
+                    clusterName: AKS_CLUSTER_NAME,
+                    namespace: K8S_NAMESPACE,
+                    manifests: 'path/to/kubernetes/yaml/folder'
+                )
+            }
+        }
+
+        stage('Cleanup') {
+            steps {
+                echo "Cleaning up..."
+                // Add cleanup steps here if needed
+            }
+        }
+    }
+}
