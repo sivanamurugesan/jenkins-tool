@@ -50,5 +50,4 @@ RUN rm -rf /tmp/*
 # Switch back to the jenkins user
 USER jenkins
 
-# Install Jenkins plugins (you can add or remove plugins as needed)
 RUN jenkins-plugin-cli --plugins "blueocean:1.25.3 docker-workflow:1.28"
