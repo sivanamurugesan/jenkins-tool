@@ -176,7 +176,7 @@ pipeline {
 
         stage('Explain how to run test classes in Maven?') {
             steps {
-                echo 'To run test classes in Maven, you need the surefire plugin. Check and configure your settings in settings.xml and pom.xml for a property named "test."'
+                echo '1. To run test classes in Maven, you need the surefire plugin. Check and configure your settings in settings.xml and pom.xml for a property named "test."'
             }
         }
     }
